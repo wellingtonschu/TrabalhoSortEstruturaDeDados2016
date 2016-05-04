@@ -8,6 +8,7 @@ namespace Sort
         static void Main(string[] args)
         {
             Stopwatch st = new Stopwatch();
+            Random rnd = new Random();
 
             bubbleSort b = new bubbleSort();
             selectionSort s = new selectionSort();
@@ -15,13 +16,43 @@ namespace Sort
             mergeSort m = new mergeSort();
             quickSort q = new quickSort();
 
-            int[] arrayBubble = { 10, 6, 8, 3, 1, 5, 9, 7, 4, 2 };
-            int[] arrayBubble2 = { 10, 6, 8, 3, 1, 5, 9, 7, 4, 2 };
-            int[] arrayBubble3 = { 10, 6, 8, 3, 1, 5, 9, 7, 4, 2 };
-            int[] arraySelection = { 10, 6, 8, 3, 1, 5, 9, 7, 4, 2 };
-            int[] arrayInsertion = { 10, 6, 8, 3, 1, 5, 9, 7, 4, 2 };
-            int[] arrayMerge = { 10, 6, 8, 3, 1, 5, 9, 7, 4, 2 };
-            int[] arrayQuick = { 10, 6, 8, 3, 1, 5, 9, 7, 4, 2 };
+            long tempoBubble;
+            long tempoSelection;
+            long tempoInsertion;
+            long tempoMerge;
+            long tempoQuick;
+
+            int tamanhoArray = 10000;
+
+            int[] arrayBubble = new int[tamanhoArray]; 
+            for (int y = 0; y < arrayBubble.Length; y++)
+            {
+                arrayBubble[y] = rnd.Next();
+            }
+
+            int[] arraySelection = new int[tamanhoArray];
+            for (int y = 0; y < arraySelection.Length; y++)
+            {
+                arraySelection[y] = rnd.Next();
+            }
+
+            int[] arrayInsertion = new int[tamanhoArray];
+            for (int y = 0; y < arrayInsertion.Length; y++)
+            {
+                arrayInsertion[y] = rnd.Next();
+            }
+
+            int[] arrayMerge = new int[tamanhoArray];
+            for (int y = 0; y < arrayMerge.Length; y++)
+            {
+                arrayMerge[y] = rnd.Next();
+            }
+
+            int[] arrayQuick = new int[tamanhoArray];
+            for (int y = 0; y < arrayQuick.Length; y++)
+            {
+                arrayQuick[y] = rnd.Next();
+            }
 
             Console.WriteLine("Pressione qualquer tecla para iniciar");
             Console.ReadKey();
@@ -31,8 +62,8 @@ namespace Sort
             Console.WriteLine(String.Join(" ", arrayBubble));
             b.BubbleSort(arrayBubble);
             st.Stop();
+            tempoBubble = st.ElapsedTicks;
             
-            Console.WriteLine("Tempo de execução Bubble Sort: " + st.ElapsedTicks);
             Console.ReadKey();
 
             st.Restart();
@@ -40,8 +71,8 @@ namespace Sort
             Console.WriteLine(String.Join(" ", arraySelection));
             s.SelectionSort(arraySelection);
             st.Stop();
+            tempoSelection = st.ElapsedTicks;
 
-            Console.WriteLine("Tempo de execução Selection Sort: " + st.ElapsedTicks);
             Console.ReadKey();
 
             st.Restart();
@@ -49,8 +80,8 @@ namespace Sort
             Console.WriteLine(String.Join(" ", arrayInsertion));
             i.InsertionSort(arrayInsertion);
             st.Stop();
+            tempoInsertion = st.ElapsedTicks;
 
-            Console.WriteLine("Tempo de execução Insertion Sort: " + st.ElapsedTicks);
             Console.ReadKey();
 
             st.Restart();
@@ -58,8 +89,8 @@ namespace Sort
             Console.WriteLine(String.Join(" ", arrayMerge));
             m.MergeSort(arrayMerge, 0, arrayMerge.Length - 1);
             st.Stop();
+            tempoMerge = st.ElapsedTicks;
 
-            Console.WriteLine("Tempo de execução Merge Sort: " + st.ElapsedTicks);
             Console.ReadKey();
 
             st.Restart();
@@ -67,8 +98,18 @@ namespace Sort
             Console.WriteLine(String.Join(" ", arrayQuick));
             q.QuickSort(arrayQuick, 0, arrayQuick.Length - 1);
             st.Stop();
+            tempoQuick = st.ElapsedTicks;
 
-            Console.WriteLine("Tempo de execução Quick Sort: " + st.ElapsedTicks);
+            Console.ReadKey();
+
+            Console.WriteLine("Tempo de execução: ");
+
+            Console.WriteLine("\nTempo de execução Bubble Sort: " + tempoBubble);
+            Console.WriteLine("Tempo de execução Selection Sort: " + tempoSelection);
+            Console.WriteLine("Tempo de execução Insertion Sort: " + tempoInsertion);
+            Console.WriteLine("Tempo de execução Merge Sort: " + tempoMerge);
+            Console.WriteLine("Tempo de execução Quick Sort: " + tempoQuick);
+
             Console.ReadKey();
         }
     }
