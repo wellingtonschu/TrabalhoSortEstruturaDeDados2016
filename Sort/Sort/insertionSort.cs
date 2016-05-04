@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace Sort
+﻿namespace Sort
 {
     class insertionSort
     {
@@ -18,8 +16,6 @@ namespace Sort
                     j--; ;
                 }
                 array[j + 1] = temp;
-                Console.WriteLine("Após passo " + i);
-                Console.WriteLine("[" + String.Join(" ", array) + "]");
             }
         }
     }

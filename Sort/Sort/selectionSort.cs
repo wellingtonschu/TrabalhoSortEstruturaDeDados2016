@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace Sort
+﻿namespace Sort
 {
     class selectionSort
     {
@@ -25,8 +23,6 @@ namespace Sort
 
                 array[posicao] = array[i];
                 array[i] = temp;
-                Console.WriteLine("Após passo " + (i + 1));
-                Console.WriteLine("[" + String.Join(" ", array) + "]");
             }
         }
     }

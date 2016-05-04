@@ -7,108 +7,118 @@ namespace Sort
     {
         static void Main(string[] args)
         {
+            //Inicia biblioteca do cronômetro
             Stopwatch st = new Stopwatch();
+            //Inicia biblioteca de numeros randomicos
             Random rnd = new Random();
 
+            //Inicia classes com funções de ordenação
             bubbleSort b = new bubbleSort();
             selectionSort s = new selectionSort();
             insertionSort i = new insertionSort();
             mergeSort m = new mergeSort();
             quickSort q = new quickSort();
 
-            long tempoBubble;
-            long tempoSelection;
-            long tempoInsertion;
-            long tempoMerge;
-            long tempoQuick;
+            //Declaração do tamanho dos vetores
+            int tamanhoArray1 = 10000;
+            int tamanhoArray2 = 100000;
 
-            int tamanhoArray = 10000;
+            /*Declaração de variaveis para armazenamenoto da contagem de tempo de execução das
+             * funções num vetor de 10000 elementos aleatórios
+             */
+            long tempo1BubbleRandom;
+            long tempo1SelectionRandom;
+            long tempo1InsertionRandom;
+            long tempo1MergeRandom;
+            long tempo1QuickRandom;
 
-            int[] arrayBubble = new int[tamanhoArray]; 
-            for (int y = 0; y < arrayBubble.Length; y++)
+            //Preenchimento do vetor de 10000 elementos com números aleatórios
+            int[] array1BubbleRandom = new int[tamanhoArray1]; 
+            for (int y = 0; y < array1BubbleRandom.Length; y++)
             {
-                arrayBubble[y] = rnd.Next();
+                array1BubbleRandom[y] = rnd.Next();
             }
 
-            int[] arraySelection = new int[tamanhoArray];
-            for (int y = 0; y < arraySelection.Length; y++)
+            int[] array1SelectionRandom = new int[tamanhoArray1];
+            for (int y = 0; y < array1SelectionRandom.Length; y++)
             {
-                arraySelection[y] = rnd.Next();
+                array1SelectionRandom[y] = rnd.Next();
             }
 
-            int[] arrayInsertion = new int[tamanhoArray];
-            for (int y = 0; y < arrayInsertion.Length; y++)
+            int[] array1InsertionRandom = new int[tamanhoArray1];
+            for (int y = 0; y < array1InsertionRandom.Length; y++)
             {
-                arrayInsertion[y] = rnd.Next();
+                array1InsertionRandom[y] = rnd.Next();
             }
 
-            int[] arrayMerge = new int[tamanhoArray];
-            for (int y = 0; y < arrayMerge.Length; y++)
+            int[] array1MergeRandom = new int[tamanhoArray1];
+            for (int y = 0; y < array1MergeRandom.Length; y++)
             {
-                arrayMerge[y] = rnd.Next();
+                array1MergeRandom[y] = rnd.Next();
             }
 
-            int[] arrayQuick = new int[tamanhoArray];
-            for (int y = 0; y < arrayQuick.Length; y++)
+            int[] array1QuickRandom = new int[tamanhoArray1];
+            for (int y = 0; y < array1QuickRandom.Length; y++)
             {
-                arrayQuick[y] = rnd.Next();
+                array1QuickRandom[y] = rnd.Next();
             }
 
-            Console.WriteLine("Pressione qualquer tecla para iniciar");
+            Console.WriteLine("Pressione qualquer tecla para iniciar - Bubble Sort - 10000 - Aleatórios");
             Console.ReadKey();
-
-            st.Start();
-            Console.WriteLine("Array inicial - Bubble Sort");
-            Console.WriteLine(String.Join(" ", arrayBubble));
-            b.BubbleSort(arrayBubble);
-            st.Stop();
-            tempoBubble = st.ElapsedTicks;
             
-            Console.ReadKey();
-
-            st.Restart();
-            Console.WriteLine("\nArray inicial - Selection Sort");
-            Console.WriteLine(String.Join(" ", arraySelection));
-            s.SelectionSort(arraySelection);
+            st.Start();
+            b.BubbleSort(array1BubbleRandom);
             st.Stop();
-            tempoSelection = st.ElapsedTicks;
+            tempo1BubbleRandom = st.ElapsedTicks;
 
+            Console.WriteLine("Bubble Sort Finalizado");
+            Console.WriteLine("Pressione qualquer tecla para iniciar - Selection Sort - 10000 - Aleatórios");
             Console.ReadKey();
-
+            
             st.Restart();
-            Console.WriteLine("\nArray inicial - Insertion Sort");
-            Console.WriteLine(String.Join(" ", arrayInsertion));
-            i.InsertionSort(arrayInsertion);
+            s.SelectionSort(array1SelectionRandom);
             st.Stop();
-            tempoInsertion = st.ElapsedTicks;
+            tempo1SelectionRandom = st.ElapsedTicks;
 
+            Console.WriteLine("Selection Sort Finalizado");
+            Console.WriteLine("Pressione qualquer tecla para iniciar - Insertion Sort - 10000 - Aleatórios");
             Console.ReadKey();
-
+            
             st.Restart();
-            Console.WriteLine("\nArray inicial - Merge Sort");
-            Console.WriteLine(String.Join(" ", arrayMerge));
-            m.MergeSort(arrayMerge, 0, arrayMerge.Length - 1);
+            i.InsertionSort(array1InsertionRandom);
             st.Stop();
-            tempoMerge = st.ElapsedTicks;
+            tempo1InsertionRandom = st.ElapsedTicks;
 
+            Console.WriteLine("Insertion Sort Finalizado");
+            Console.WriteLine("Pressione qualquer tecla para iniciar - Merge Sort - 10000 - Aleatórios");
             Console.ReadKey();
-
+            
             st.Restart();
-            Console.WriteLine("\nArray inicial - Quick Sort");
-            Console.WriteLine(String.Join(" ", arrayQuick));
-            q.QuickSort(arrayQuick, 0, arrayQuick.Length - 1);
+            m.MergeSort(array1MergeRandom, 0, array1MergeRandom.Length - 1);
             st.Stop();
-            tempoQuick = st.ElapsedTicks;
+            tempo1MergeRandom = st.ElapsedTicks;
+
+            Console.WriteLine("Merge Sort Finalizado");
+            Console.WriteLine("Pressione qualquer tecla para iniciar - Quick Sort - 10000 - Aleatórios");
+            Console.ReadKey();
+            
+            st.Restart();
+            q.QuickSort(array1QuickRandom, 0, array1QuickRandom.Length - 1);
+            st.Stop();
+            tempo1QuickRandom = st.ElapsedTicks;
+
+            Console.WriteLine("Quick Sort Finalizado");
+            Console.WriteLine("Pressione qualquer tecla para resultados");
 
             Console.ReadKey();
 
-            Console.WriteLine("Tempo de execução: ");
+            Console.WriteLine("Tempo de execução aleatórios: ");
 
-            Console.WriteLine("\nTempo de execução Bubble Sort: " + tempoBubble);
-            Console.WriteLine("Tempo de execução Selection Sort: " + tempoSelection);
-            Console.WriteLine("Tempo de execução Insertion Sort: " + tempoInsertion);
-            Console.WriteLine("Tempo de execução Merge Sort: " + tempoMerge);
-            Console.WriteLine("Tempo de execução Quick Sort: " + tempoQuick);
+            Console.WriteLine("\nTempo de execução Bubble Sort: " + tempo1BubbleRandom);
+            Console.WriteLine("Tempo de execução Selection Sort: " + tempo1SelectionRandom);
+            Console.WriteLine("Tempo de execução Insertion Sort: " + tempo1InsertionRandom);
+            Console.WriteLine("Tempo de execução Merge Sort: " + tempo1MergeRandom);
+            Console.WriteLine("Tempo de execução Quick Sort: " + tempo1QuickRandom);
 
             Console.ReadKey();
         }

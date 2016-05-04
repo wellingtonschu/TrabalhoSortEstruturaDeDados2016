@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace Sort
+﻿namespace Sort
 {
     class mergeSort
     {
@@ -21,12 +19,6 @@ namespace Sort
 
         private void Merge(int[] array, int inicio, int meio, int fim)
         {
-            Console.Write("Parte da Esquerda: ");
-            imprimeArray(array, inicio, meio);
-            Console.Write("Parte da Direita: ");
-            imprimeArray(array, meio + 1, fim);
-            Console.WriteLine();
-
             int[] temp = new int[array.Length];
             int l = inicio;
             int r = fim;
@@ -59,22 +51,6 @@ namespace Sort
             {
                 array[i1] = temp[i1];
             }
-
-            Console.Write("Após junção: ");
-            imprimeArray(array, inicio, fim);
-            Console.WriteLine();
-        }
-
-        private void imprimeArray(int[] array, int inicio, int fim)
-        {
-            Console.Write("[ ");
-
-            for (int comeco = inicio; comeco <= fim; comeco++)
-            {
-                Console.Write(array[comeco] + " ");
-            }
-
-            Console.Write("]");
         }
     }
 }

@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace Sort
+﻿namespace Sort
 {
     class bubbleSort
     {
@@ -17,8 +15,6 @@ namespace Sort
                         array[j + 1] = auxiliar;
                     }
                 }
-                Console.WriteLine("Após passo " + (i + 1));
-                Console.WriteLine("[" + String.Join(" ", array) + "]");
             }
         }
     }

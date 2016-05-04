@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace Sort
+﻿namespace Sort
 {
     class quickSort
     {
@@ -29,8 +27,6 @@ namespace Sort
             }
 
             troca(array, fim, menor + 1);
-            Console.WriteLine("Pivot: " + array[menor + 1]);
-            Console.WriteLine(String.Join(" ", array));
 
             return menor + 1;
         }
