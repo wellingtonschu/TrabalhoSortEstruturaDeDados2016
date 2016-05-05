@@ -49,6 +49,7 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="quickSort.cs" />
+    <Compile Include="radixSort.cs" />
     <Compile Include="selectionSort.cs" />
   </ItemGroup>
   <ItemGroup>

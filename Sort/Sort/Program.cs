@@ -18,6 +18,7 @@ namespace Sort
             insertionSort i = new insertionSort();
             mergeSort m = new mergeSort();
             quickSort q = new quickSort();
+            radixSort r = new radixSort();
 
             //Declaração do tamanho dos vetores
             int tamanhoArray1 = 10000;
@@ -31,6 +32,7 @@ namespace Sort
             long tempo1InsertionCrescente;
             long tempo1MergeCrescente;
             long tempo1QuickCrescente;
+            long tempo1RadixCrescente;
 
             /*Declaração de variaveis para armazenamenoto da contagem de tempo de execução das
              * funções num vetor de 100000 elementos em ordem crescente
@@ -40,6 +42,7 @@ namespace Sort
             long tempo2InsertionCrescente;
             long tempo2MergeCrescente;
             long tempo2QuickCrescente;
+            long tempo2RadixCrescente;
 
             /*Declaração de variaveis para armazenamenoto da contagem de tempo de execução das
              * funções num vetor de 10000 elementos em ordem decrescente
@@ -49,6 +52,7 @@ namespace Sort
             long tempo1InsertionDecrescente;
             long tempo1MergeDecrescente;
             long tempo1QuickDecrescente;
+            long tempo1RadixDecrescente;
 
             /*Declaração de variaveis para armazenamenoto da contagem de tempo de execução das
              * funções num vetor de 100000 elementos em ordem decrescente
@@ -58,6 +62,7 @@ namespace Sort
             long tempo2InsertionDecrescente;
             long tempo2MergeDecrescente;
             long tempo2QuickDecrescente;
+            long tempo2RadixDecrescente;
 
             /*Declaração de variaveis para armazenamenoto da contagem de tempo de execução das
              * funções num vetor de 10000 elementos aleatórios
@@ -67,6 +72,7 @@ namespace Sort
             long tempo1InsertionRandom;
             long tempo1MergeRandom;
             long tempo1QuickRandom;
+            long tempo1RadixRandom;
 
             /*Declaração de variaveis para armazenamenoto da contagem de tempo de execução das
              * funções num vetor de 100000 elementos aleatórios
@@ -76,41 +82,38 @@ namespace Sort
             long tempo2InsertionRandom;
             long tempo2MergeRandom;
             long tempo2QuickRandom;
+            long tempo2RadixRandom;
 
             //Declaração e preenchimento do vetor de 10000 elementos com números crescentes
-            int auxBubble = 0;
-            int[] array1BubbleCrescentes = new int[tamanhoArray1];
-            for (int y = 0; y < array1BubbleCrescentes.Length; y++)
+            int auxVetorCr1 = 0;
+            int[] array1Crescentes = new int[tamanhoArray1];
+            for (int y = 0; y < array1Crescentes.Length; y++)
             {
-                array1BubbleCrescentes[y] = auxBubble++;
+                array1Crescentes[y] = auxVetorCr1++;
             }
 
-            int auxSelection = 0;
-            int[] array1SelectionCrescentes = new int[tamanhoArray1];
-            for (int y = 0; y < array1SelectionCrescentes.Length; y++)
+            //Declaração e preenchimento do vetor de 100000 elementos com números crescentes
+            int auxVetorCr2 = 0;
+            int[] array2Crescentes = new int[tamanhoArray2];
+            for (int y = 0; y < array2Crescentes.Length; y++)
             {
-                array1SelectionCrescentes[y] = auxSelection++;
+                array2Crescentes[y] = auxVetorCr2++;
             }
 
-            int auxInsertion = 0;
-            int[] array1InsertionCrescentes = new int[tamanhoArray1];
-            for (int y = 0; y < array1InsertionCrescentes.Length; y++)
+            //Declaração e preenchimento do vetor de 10000 elementos com números decrescentes
+            int auxVetorDe1 = 10000;
+            int[] array1Decrescentes = new int[tamanhoArray1];
+            for (int y = 0; y < array1Decrescentes.Length; y++)
             {
-                array1InsertionCrescentes[y] = auxInsertion++;
+                array1Decrescentes[y] = auxVetorDe1--;
             }
 
-            int auxMerge = 0;
-            int[] array1MergeCrescentes = new int[tamanhoArray1];
-            for (int y = 0; y < array1MergeCrescentes.Length; y++)
+            //Declaração e preenchimento do vetor de 100000 elementos com números decrescentes
+            int auxVetorDe2 = 100000;
+            int[] array2Decrescentes = new int[tamanhoArray2];
+            for (int y = 0; y < array2Decrescentes.Length; y++)
             {
-                array1MergeCrescentes[y] = auxMerge++;
-            }
-
-            int auxQuick = 0;
-            int[] array1QuickCrescentes = new int[tamanhoArray1];
-            for (int y = 0; y < array1QuickCrescentes.Length; y++)
-            {
-                array1QuickCrescentes[y] = auxQuick++;
+                array2Decrescentes[y] = auxVetorDe2--;
             }
 
             //Declaração e preenchimento do vetor de 10000 elementos com números aleatórios
@@ -144,6 +147,12 @@ namespace Sort
                 array1QuickRandom[y] = rnd.Next();
             }
 
+            int[] array1RadixRandom = new int[tamanhoArray1];
+            for (int y = 0; y < array1RadixRandom.Length; y++)
+            {
+                array1RadixRandom[y] = rnd.Next();
+            }
+
             //Declaração e preenchimento do vetor de 100000 elementos com números aleatórios
             int[] array2BubbleRandom = new int[tamanhoArray2];
             for (int y = 0; y < array2BubbleRandom.Length; y++)
@@ -175,11 +184,17 @@ namespace Sort
                 array2QuickRandom[y] = rnd.Next();
             }
 
+            int[] array2RadixRandom = new int[tamanhoArray2];
+            for (int y = 0; y < array2RadixRandom.Length; y++)
+            {
+                array2RadixRandom[y] = rnd.Next();
+            }
+
             //Execução das funções de ordenação com vetores de 10000 elementos aleatórios 
             Console.WriteLine("Pressione qualquer tecla para iniciar - Bubble Sort - 10000 - Crescente");
             Console.ReadKey();
             st.Start();
-            b.BubbleSort(array1BubbleCrescentes);
+            b.BubbleSort(array1Crescentes);
             st.Stop();
             tempo1BubbleCrescente = st.ElapsedTicks;
             Console.WriteLine("Bubble Sort - 10000 - Crescente Finalizado");
@@ -187,7 +202,7 @@ namespace Sort
             Console.WriteLine("Pressione qualquer tecla para iniciar - Selection Sort - 10000 - Crescente");
             Console.ReadKey();
             st.Restart();
-            s.SelectionSort(array1BubbleCrescentes);
+            s.SelectionSort(array1Crescentes);
             st.Stop();
             tempo1SelectionCrescente = st.ElapsedTicks;
             Console.WriteLine("Selection Sort - 10000 - Crescente Finalizado");
@@ -195,7 +210,7 @@ namespace Sort
             Console.WriteLine("Pressione qualquer tecla para iniciar - Insertion Sort - 10000 - Crescente");
             Console.ReadKey();
             st.Restart();
-            i.InsertionSort(array1BubbleCrescentes);
+            i.InsertionSort(array1Crescentes);
             st.Stop();
             tempo1InsertionCrescente = st.ElapsedTicks;
             Console.WriteLine("Insertion Sort - 10000 - Crescente Finalizado");
@@ -203,7 +218,7 @@ namespace Sort
             Console.WriteLine("Pressione qualquer tecla para iniciar - Merge Sort - 10000 - Crescente");
             Console.ReadKey();
             st.Restart();
-            m.MergeSort(array1BubbleCrescentes, 0, array1BubbleCrescentes.Length - 1);
+            m.MergeSort(array1Crescentes, 0, array1Crescentes.Length - 1);
             st.Stop();
             tempo1MergeCrescente = st.ElapsedTicks;
             Console.WriteLine("Merge Sort - 10000 - Crescente Finalizado");
@@ -211,10 +226,165 @@ namespace Sort
             Console.WriteLine("Pressione qualquer tecla para iniciar - Quick Sort - 10000 - Crescente");
             Console.ReadKey();
             st.Restart();
-            q.QuickSort(array1BubbleCrescentes, 0, array1BubbleCrescentes.Length - 1);
+            q.QuickSort(array1Crescentes, 0, array1Crescentes.Length - 1);
             st.Stop();
             tempo1QuickCrescente = st.ElapsedTicks;
             Console.WriteLine("Quick Sort - 10000 - Crescente Finalizado");
+
+            Console.WriteLine("Pressione qualquer tecla para iniciar - Radix Sort - 10000 - Crescente");
+            Console.ReadKey();
+            st.Restart();
+            r.RadixSort(array1Crescentes);
+            st.Stop();
+            tempo1RadixCrescente = st.ElapsedTicks;
+            Console.WriteLine("Radix sort - 10000 - Crescente Finalizado");
+
+            //Execução das funções de ordenação com vetores de 100000 elementos crescentes 
+            Console.WriteLine("Pressione qualquer tecla para iniciar - Bubble Sort - 100000 - Crescente");
+            Console.ReadKey();
+            st.Start();
+            b.BubbleSort(array2Crescentes);
+            st.Stop();
+            tempo2BubbleCrescente = st.ElapsedTicks;
+            Console.WriteLine("Bubble Sort - 100000 - Crescente Finalizado");
+
+            Console.WriteLine("Pressione qualquer tecla para iniciar - Selection Sort - 100000 - Crescente");
+            Console.ReadKey();
+            st.Restart();
+            s.SelectionSort(array2Crescentes);
+            st.Stop();
+            tempo2SelectionCrescente = st.ElapsedTicks;
+            Console.WriteLine("Selection Sort - 100000 - Crescente Finalizado");
+
+            Console.WriteLine("Pressione qualquer tecla para iniciar - Insertion Sort - 100000 - Crescente");
+            Console.ReadKey();
+            st.Restart();
+            i.InsertionSort(array2Crescentes);
+            st.Stop();
+            tempo2InsertionCrescente = st.ElapsedTicks;
+            Console.WriteLine("Insertion Sort - 100000 - Crescente Finalizado");
+
+            Console.WriteLine("Pressione qualquer tecla para iniciar - Merge Sort - 100000 - Crescente");
+            Console.ReadKey();
+            st.Restart();
+            m.MergeSort(array2Crescentes, 0, array2Crescentes.Length - 1);
+            st.Stop();
+            tempo2MergeCrescente = st.ElapsedTicks;
+            Console.WriteLine("Merge Sort - 100000 - Crescente Finalizado");
+            
+            Console.WriteLine("Pressione qualquer tecla para iniciar - Quick Sort - 100000 - Crescente");
+            Console.ReadKey();
+            st.Restart();
+            q.QuickSort(array2Crescentes, 0, array2Crescentes.Length - 1);
+            st.Stop();
+            tempo2QuickCrescente = st.ElapsedTicks;
+            Console.WriteLine("Quick Sort - 100000 - Crescente Finalizado");
+            
+            Console.WriteLine("Pressione qualquer tecla para iniciar - Radix Sort - 100000 - Crescente");
+            Console.ReadKey();
+            st.Restart();
+            r.RadixSort(array2Crescentes);
+            st.Stop();
+            tempo2RadixCrescente = st.ElapsedTicks;
+            Console.WriteLine("Radix sort - 100000 - Crescente Finalizado");
+            
+            //Execução das funções de ordenação com vetores de 10000 elementos decrescentes 
+            Console.WriteLine("Pressione qualquer tecla para iniciar - Bubble Sort - 10000 - Decrescente");
+            Console.ReadKey();
+            st.Start();
+            b.BubbleSort(array1Decrescentes);
+            st.Stop();
+            tempo1BubbleDecrescente = st.ElapsedTicks;
+            Console.WriteLine("Bubble Sort - 10000 - Decrescente Finalizado");
+
+            Console.WriteLine("Pressione qualquer tecla para iniciar - Selection Sort - 10000 - Decrescente");
+            Console.ReadKey();
+            st.Restart();
+            s.SelectionSort(array1Decrescentes);
+            st.Stop();
+            tempo1SelectionDecrescente = st.ElapsedTicks;
+            Console.WriteLine("Selection Sort - 10000 - Decrescente Finalizado");
+
+            Console.WriteLine("Pressione qualquer tecla para iniciar - Insertion Sort - 10000 - Decrescente");
+            Console.ReadKey();
+            st.Restart();
+            i.InsertionSort(array1Decrescentes);
+            st.Stop();
+            tempo1InsertionDecrescente = st.ElapsedTicks;
+            Console.WriteLine("Insertion Sort - 10000 - Decrescente Finalizado");
+
+            Console.WriteLine("Pressione qualquer tecla para iniciar - Merge Sort - 10000 - Decrescente");
+            Console.ReadKey();
+            st.Restart();
+            m.MergeSort(array1Decrescentes, 0, array1Decrescentes.Length - 1);
+            st.Stop();
+            tempo1MergeDecrescente = st.ElapsedTicks;
+            Console.WriteLine("Merge Sort - 10000 - Decrescente Finalizado");
+
+            Console.WriteLine("Pressione qualquer tecla para iniciar - Quick Sort - 10000 - Decrescente");
+            Console.ReadKey();
+            st.Restart();
+            q.QuickSort(array1Decrescentes, 0, array1Decrescentes.Length - 1);
+            st.Stop();
+            tempo1QuickDecrescente = st.ElapsedTicks;
+            Console.WriteLine("Quick Sort - 10000 - Decrescente Finalizado");
+
+            Console.WriteLine("Pressione qualquer tecla para iniciar - Radix Sort - 10000 - Decrescente");
+            Console.ReadKey();
+            st.Restart();
+            r.RadixSort(array1Decrescentes);
+            st.Stop();
+            tempo1RadixDecrescente = st.ElapsedTicks;
+            Console.WriteLine("Radix sort - 10000 - Decrescente Finalizado");
+
+            //Execução das funções de ordenação com vetores de 100000 elementos decrescentes
+            Console.WriteLine("Pressione qualquer tecla para iniciar - Bubble Sort - 100000 - Decrescente");
+            Console.ReadKey();
+            st.Start();
+            b.BubbleSort(array2Decrescentes);
+            st.Stop();
+            tempo2BubbleDecrescente = st.ElapsedTicks;
+            Console.WriteLine("Bubble Sort - 100000 - Decrescente Finalizado");
+
+            Console.WriteLine("Pressione qualquer tecla para iniciar - Selection Sort - 100000 - Decrescente");
+            Console.ReadKey();
+            st.Restart();
+            s.SelectionSort(array2Decrescentes);
+            st.Stop();
+            tempo2SelectionDecrescente = st.ElapsedTicks;
+            Console.WriteLine("Selection Sort - 100000 - Decrescente Finalizado");
+
+            Console.WriteLine("Pressione qualquer tecla para iniciar - Insertion Sort - 100000 - Decrescente");
+            Console.ReadKey();
+            st.Restart();
+            i.InsertionSort(array2Decrescentes);
+            st.Stop();
+            tempo2InsertionDecrescente = st.ElapsedTicks;
+            Console.WriteLine("Insertion Sort - 100000 - Decrescente Finalizado");
+
+            Console.WriteLine("Pressione qualquer tecla para iniciar - Merge Sort - 100000 - Decrescente");
+            Console.ReadKey();
+            st.Restart();
+            m.MergeSort(array2Decrescentes, 0, array2Decrescentes.Length - 1);
+            st.Stop();
+            tempo2MergeDecrescente = st.ElapsedTicks;
+            Console.WriteLine("Merge Sort - 100000 - Decrescente Finalizado");
+
+            Console.WriteLine("Pressione qualquer tecla para iniciar - Quick Sort - 100000 - Decrescente");
+            Console.ReadKey();
+            st.Restart();
+            q.QuickSort(array2Decrescentes, 0, array2Decrescentes.Length - 1);
+            st.Stop();
+            tempo2QuickDecrescente = st.ElapsedTicks;
+            Console.WriteLine("Quick Sort - 100000 - Decrescente Finalizado");
+
+            Console.WriteLine("Pressione qualquer tecla para iniciar - Radix Sort - 100000 - Decrescente");
+            Console.ReadKey();
+            st.Restart();
+            r.RadixSort(array2Decrescentes);
+            st.Stop();
+            tempo2RadixDecrescente = st.ElapsedTicks;
+            Console.WriteLine("Radix sort - 100000 - Decrescente Finalizado");
 
             //Execução das funções de ordenação com vetores de 10000 elementos aleatórios 
             Console.WriteLine("Pressione qualquer tecla para iniciar - Bubble Sort - 10000 - Aleatórios");
@@ -257,6 +427,14 @@ namespace Sort
             tempo1QuickRandom = st.ElapsedTicks;
             Console.WriteLine("Quick Sort - 10000 - Aleatórios Finalizado");
 
+            Console.WriteLine("Pressione qualquer tecla para iniciar - Radix Sort - 10000 - Aleatórios");
+            Console.ReadKey();
+            st.Restart();
+            r.RadixSort(array1RadixRandom);
+            st.Stop();
+            tempo1RadixRandom = st.ElapsedTicks;
+            Console.WriteLine("Radix Sort - 10000 - Aleatórios Finalizado");
+
             //Execução das funções de ordenação com vetores de 100000 elementos aleatórios 
             Console.WriteLine("Pressione qualquer tecla para iniciar - Bubble Sort - 100000 - Aleatórios");
             Console.ReadKey();
@@ -298,18 +476,53 @@ namespace Sort
             tempo2QuickRandom = st.ElapsedTicks;
             Console.WriteLine("Quick Sort - 100000 - Aleatórios Finalizado");
 
-
+            Console.WriteLine("Pressione qualquer tecla para iniciar - Radix Sort - 100000 - Aleatórios");
+            Console.ReadKey();
+            st.Restart();
+            r.RadixSort(array2RadixRandom);
+            st.Stop();
+            tempo2RadixRandom = st.ElapsedTicks;
+            Console.WriteLine("Radix Sort - 100000 - Aleatórios Finalizado");
+            
             Console.WriteLine("Pressione qualquer tecla para resultados");
 
             Console.ReadKey();
 
             Console.WriteLine("\nTempo de execução - 10000 - Crescente: ");
-
+            
             Console.WriteLine("\nTempo de execução Bubble Sort - 10000 - Crescente: " + tempo1BubbleCrescente);
             Console.WriteLine("Tempo de execução Selection Sort - 10000 - Crescente: " + tempo1SelectionCrescente);
             Console.WriteLine("Tempo de execução Insertion Sort - 10000 - Crescente: " + tempo1InsertionCrescente);
             Console.WriteLine("Tempo de execução Merge Sort - 10000 - Crescente: " + tempo1MergeCrescente);
             Console.WriteLine("Tempo de execução Quick Sort - 10000 - Crescente: " + tempo1QuickCrescente);
+            Console.WriteLine("Tempo de execução Radix Sort - 10000 - Crescente: " + tempo1RadixCrescente);
+
+            Console.WriteLine("\nTempo de execução - 100000 - Crescente: ");
+
+            Console.WriteLine("\nTempo de execução Bubble Sort - 100000 - Crescente: " + tempo2BubbleCrescente);
+            Console.WriteLine("Tempo de execução Selection Sort - 100000 - Crescente: " + tempo2SelectionCrescente);
+            Console.WriteLine("Tempo de execução Insertion Sort - 100000 - Crescente: " + tempo2InsertionCrescente);
+            Console.WriteLine("Tempo de execução Merge Sort - 100000 - Crescente: " + tempo2MergeCrescente);
+            Console.WriteLine("Tempo de execução Quick Sort - 100000 - Crescente: " + tempo2QuickCrescente);
+            Console.WriteLine("Tempo de execução Radix Sort - 100000 - Crescente: " + tempo2RadixCrescente);
+            
+            Console.WriteLine("\nTempo de execução - 10000 - Decrescente: ");
+
+            Console.WriteLine("\nTempo de execução Bubble Sort - 10000 - Decrescente: " + tempo1BubbleDecrescente);
+            Console.WriteLine("Tempo de execução Selection Sort - 10000 - Decrescente: " + tempo1SelectionDecrescente);
+            Console.WriteLine("Tempo de execução Insertion Sort - 10000 - Decrescente: " + tempo1InsertionDecrescente);
+            Console.WriteLine("Tempo de execução Merge Sort - 10000 - Decrescente: " + tempo1MergeDecrescente);
+            Console.WriteLine("Tempo de execução Quick Sort - 10000 - Decrescente: " + tempo1QuickDecrescente);
+            Console.WriteLine("Tempo de execução Radix Sort - 10000 - Decrescente: " + tempo1RadixDecrescente);
+
+            Console.WriteLine("\nTempo de execução - 100000 - Decrescente: ");
+
+            Console.WriteLine("\nTempo de execução Bubble Sort - 100000 - Decrescente: " + tempo2BubbleDecrescente);
+            Console.WriteLine("Tempo de execução Selection Sort - 100000 - Decrescente: " + tempo2SelectionDecrescente);
+            Console.WriteLine("Tempo de execução Insertion Sort - 100000 - Decrescente: " + tempo2InsertionDecrescente);
+            Console.WriteLine("Tempo de execução Merge Sort - 100000 - Decrescente: " + tempo2MergeDecrescente);
+            Console.WriteLine("Tempo de execução Quick Sort - 100000 - Decrescente: " + tempo2QuickDecrescente);
+            Console.WriteLine("Tempo de execução Radix Sort - 100000 - Decrescente: " + tempo2RadixDecrescente);
 
             Console.WriteLine("\nTempo de execução - 10000 - Aleatórios: ");
 
@@ -318,6 +531,7 @@ namespace Sort
             Console.WriteLine("Tempo de execução Insertion Sort - 10000 - Aleatórios: " + tempo1InsertionRandom);
             Console.WriteLine("Tempo de execução Merge Sort - 10000 - Aleatórios: " + tempo1MergeRandom);
             Console.WriteLine("Tempo de execução Quick Sort - 10000 - Aleatórios: " + tempo1QuickRandom);
+            Console.WriteLine("Tempo de execução Radix Sort - 10000 - Aleatórios: " + tempo1RadixRandom);
 
             Console.WriteLine("\nTempo de execução - 100000 - Aleatórios: ");
 
@@ -326,7 +540,7 @@ namespace Sort
             Console.WriteLine("Tempo de execução Insertion Sort - 100000 - Aleatórios: " + tempo2InsertionRandom);
             Console.WriteLine("Tempo de execução Merge Sort - 100000 - Aleatórios: " + tempo2MergeRandom);
             Console.WriteLine("Tempo de execução Quick Sort - 100000 - Aleatórios: " + tempo2QuickRandom);
-
+            Console.WriteLine("Tempo de execução Radix Sort - 100000 - Aleatórios: " + tempo2RadixRandom);
 
             Console.ReadKey();
         }

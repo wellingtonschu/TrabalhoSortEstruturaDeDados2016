@@ -30,7 +30,7 @@
 
             return menor + 1;
         }
-
+        
         private static void troca(int[] array, int i, int menor)
         {
             int temp;
