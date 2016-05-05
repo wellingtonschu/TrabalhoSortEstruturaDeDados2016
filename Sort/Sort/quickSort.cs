@@ -4,9 +4,11 @@
     {
         public void QuickSort(int[] array, int inicio, int fim)
         {
+            int meio;
+
             if (inicio < fim)
             {
-                int meio = particao(array, inicio, fim);
+                meio = particao(array, inicio, fim);
                 QuickSort(array, inicio, meio - 1);
                 QuickSort(array, meio + 1, fim);
             }
