@@ -275,7 +275,7 @@ namespace Sort
             Console.WriteLine("Pressione qualquer tecla para iniciar - Quick Sort - 100000 - Crescente");
             Console.ReadKey();
             st.Restart();
-            q.QuickSort(array2Crescentes, 0, array2Crescentes.Length - 1);
+            //q.QuickSort(array2Crescentes, 0, array2Crescentes.Length - 1);
             st.Stop();
             tempo2QuickCrescente = st.ElapsedTicks;
             Console.WriteLine("Quick Sort - 100000 - Crescente Finalizado");
@@ -373,7 +373,7 @@ namespace Sort
             Console.WriteLine("Pressione qualquer tecla para iniciar - Quick Sort - 100000 - Decrescente");
             Console.ReadKey();
             st.Restart();
-            q.QuickSort(array2Decrescentes, 0, array2Decrescentes.Length - 1);
+            //q.QuickSort(array2Decrescentes, 0, array2Decrescentes.Length - 1);
             st.Stop();
             tempo2QuickDecrescente = st.ElapsedTicks;
             Console.WriteLine("Quick Sort - 100000 - Decrescente Finalizado");
