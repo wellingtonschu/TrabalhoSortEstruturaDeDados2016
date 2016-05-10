@@ -4,42 +4,45 @@
     {
         public void QuickSort(int[] array, int inicio, int fim)
         {
-            int meio;
+            int q;
 
             if (inicio < fim)
             {
-                meio = particao(array, inicio, fim);
-                QuickSort(array, inicio, meio - 1);
-                QuickSort(array, meio + 1, fim);
+                q = particao(array, inicio, fim);
+                QuickSort(array, inicio, q);
+                QuickSort(array, q + 1, fim);
             }
         }
-
-        private static int particao(int[] array, int inicio, int fim)
+        public static int particao(int[] array, int inicio, int fim)
         {
-            int pivot = array[fim];
-            int menor = inicio - 1;
+            int pivo;
+            int i;
+            int j;
+            int aux;
 
-            for (int i = inicio; i < fim; i++)
+            pivo = array[(inicio + fim) / 2];
+            i = inicio - 1;
+            j = fim + 1;
+
+            while (i < j)
             {
-                if (array[i] <= pivot)
+                do
                 {
-                    menor++;
-                    troca(array, i, menor);
+                    j = j - 1;
+                } while (array[j] > pivo);
+                do
+                {
+                    i = i + 1;
+                } while (array[i] < pivo);
+
+                if (i < j)
+                {
+                    aux = array[i];
+                    array[i] = array[j];
+                    array[j] = aux;
                 }
             }
-
-            troca(array, fim, menor + 1);
-
-            return menor + 1;
-        }
-        
-        private static void troca(int[] array, int i, int menor)
-        {
-            int temp;
-
-            temp = array[i];
-            array[i] = array[menor];
-            array[menor] = temp;
+            return j;
         }
     }
 }
