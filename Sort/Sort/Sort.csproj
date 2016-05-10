@@ -46,6 +46,7 @@
     <Compile Include="bubbleSort.cs" />
     <Compile Include="insertionSort.cs" />
     <Compile Include="mergeSort.cs" />
+    <Compile Include="mergeSort2.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="quickSort.cs" />

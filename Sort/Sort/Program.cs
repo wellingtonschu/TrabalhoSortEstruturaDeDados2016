@@ -196,26 +196,29 @@ namespace Sort
             st.Start();
             b.BubbleSort(array1Crescentes);
             st.Stop();
-            tempo1BubbleCrescente = st.ElapsedTicks;
+            Console.WriteLine("Tempo de execução: " + st.ElapsedMilliseconds);
+            Console.WriteLine(b.BubbleSort(array1Crescentes));
             Console.WriteLine("Bubble Sort - 10000 - Crescente Finalizado");
 
-            Console.WriteLine("Pressione qualquer tecla para iniciar - Selection Sort - 10000 - Crescente");
+            Console.WriteLine("\nPressione qualquer tecla para iniciar - Selection Sort - 10000 - Crescente");
             Console.ReadKey();
             st.Restart();
             s.SelectionSort(array1Crescentes);
             st.Stop();
-            tempo1SelectionCrescente = st.ElapsedTicks;
+            Console.WriteLine("Tempo de execução: " + st.ElapsedMilliseconds);
+            Console.WriteLine(s.SelectionSort(array1Crescentes));
             Console.WriteLine("Selection Sort - 10000 - Crescente Finalizado");
 
-            Console.WriteLine("Pressione qualquer tecla para iniciar - Insertion Sort - 10000 - Crescente");
+            Console.WriteLine("\nPressione qualquer tecla para iniciar - Insertion Sort - 10000 - Crescente");
             Console.ReadKey();
             st.Restart();
             i.InsertionSort(array1Crescentes);
             st.Stop();
-            tempo1InsertionCrescente = st.ElapsedTicks;
+            Console.WriteLine("Tempo de execução: " + st.ElapsedMilliseconds);
+            Console.WriteLine(i.InsertionSort(array1Crescentes));
             Console.WriteLine("Insertion Sort - 10000 - Crescente Finalizado");
 
-            Console.WriteLine("Pressione qualquer tecla para iniciar - Merge Sort - 10000 - Crescente");
+            Console.WriteLine("\nPressione qualquer tecla para iniciar - Merge Sort - 10000 - Crescente");
             Console.ReadKey();
             st.Restart();
             m.MergeSort(array1Crescentes, 0, array1Crescentes.Length - 1);
@@ -490,9 +493,9 @@ namespace Sort
 
             Console.WriteLine("\nTempo de execução - 10000 - Crescente: ");
             
-            Console.WriteLine("\nTempo de execução Bubble Sort - 10000 - Crescente: " + tempo1BubbleCrescente);
-            Console.WriteLine("Tempo de execução Selection Sort - 10000 - Crescente: " + tempo1SelectionCrescente);
-            Console.WriteLine("Tempo de execução Insertion Sort - 10000 - Crescente: " + tempo1InsertionCrescente);
+            
+            
+            
             Console.WriteLine("Tempo de execução Merge Sort - 10000 - Crescente: " + tempo1MergeCrescente);
             Console.WriteLine("Tempo de execução Quick Sort - 10000 - Crescente: " + tempo1QuickCrescente);
             Console.WriteLine("Tempo de execução Radix Sort - 10000 - Crescente: " + tempo1RadixCrescente);
