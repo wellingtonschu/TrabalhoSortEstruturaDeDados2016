@@ -2,7 +2,10 @@
 {
     class quickSort
     {
-        public void QuickSort(int[] array, int inicio, int fim)
+        public static int troca = 0;
+        public static int comparacao = 0;
+
+        public string QuickSort(int[] array, int inicio, int fim)
         {
             int q;
 
@@ -12,6 +15,7 @@
                 QuickSort(array, inicio, q);
                 QuickSort(array, q + 1, fim);
             }
+            return "Quantidade de comparações: " + comparacao + "\nQuantidade de trocas: " + troca;
         }
         public static int particao(int[] array, int inicio, int fim)
         {
@@ -35,8 +39,12 @@
                     i = i + 1;
                 } while (array[i] < pivo);
 
+                comparacao++;
+
                 if (i < j)
                 {
+                    troca++;
+
                     aux = array[i];
                     array[i] = array[j];
                     array[j] = aux;

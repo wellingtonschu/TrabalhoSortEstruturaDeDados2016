@@ -2,9 +2,10 @@
 {
     class mergeSort
     {
-        int troca = 0;
-        int comparacao = 0;
-        public void MergeSort(int[] array, int inicio, int fim)
+        public static int troca = 0;
+        public static int comparacao = 0;
+
+        public string MergeSort(int[] array, int inicio, int fim)
         {
             int meio = 0;
 
@@ -17,6 +18,7 @@
 
                 Merge(array, inicio, meio, fim);
             }
+            return "Quantidade de comparações: " + comparacao + "\nQuantidade de trocas: " + troca;
         }
 
         private void Merge(int[] array, int inicio, int meio, int fim)
