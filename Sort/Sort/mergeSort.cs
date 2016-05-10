@@ -2,6 +2,8 @@
 {
     class mergeSort
     {
+        int troca = 0;
+        int comparacao = 0;
         public void MergeSort(int[] array, int inicio, int fim)
         {
             int meio = 0;
@@ -19,37 +21,39 @@
 
         private void Merge(int[] array, int inicio, int meio, int fim)
         {
-            int[] temp = new int[array.Length];
-            int l = inicio;
-            int r = fim;
-            int m = meio + 1;
-            int k = l;
+            int cont = 0;
+            int[] aux = new int[array.Length];
+            int i, j;
 
-            while (l <= meio && m <= r)
+            for (i = inicio; i <= meio;i++)
             {
-                if (array[l] <= array[m])
+                aux[i] = array[i];
+            }
+
+            for (j = meio + 1;j <= fim;j++)
+            {
+                aux[fim + meio + 1 - j] = array[j];
+            }
+
+            i = inicio;
+            j = fim;
+
+            for (int k = inicio; k <= fim; k++)
+            {
+                comparacao++;
+                cont++;
+                if (aux[i] <= aux[j])
                 {
-                    temp[k++] = array[l++];
+                    array[k] = aux[i];
+                    troca++;
+                    i = i + 1;
                 }
                 else
                 {
-                    temp[k++] = array[m++];
+                    array[k] = aux[j];
+                    troca++;
+                    j = j - 1;
                 }
-            }
-
-            while (l <= meio)
-            {
-                temp[k++] = array[l++];
-            }
-
-            while (m <= r)
-            {
-                temp[k++] = array[m++];
-            }
-
-            for (int i1 = inicio; i1 <= fim; i1++)
-            {
-                array[i1] = temp[i1];
             }
         }
     }
