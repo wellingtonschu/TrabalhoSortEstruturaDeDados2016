@@ -33,14 +33,18 @@
                 do
                 {
                     j = j - 1;
+
+                    comparacao++;
+
                 } while (array[j] > pivo);
                 do
                 {
                     i = i + 1;
+
+                    comparacao++;
+
                 } while (array[i] < pivo);
-
-                comparacao++;
-
+                
                 if (i < j)
                 {
                     troca++;
