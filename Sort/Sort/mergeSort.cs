@@ -47,14 +47,16 @@
                 if (aux[i] <= aux[j])
                 {
                     array[k] = aux[i];
-                    troca++;
                     i = i + 1;
+
+                    troca++;
                 }
                 else
                 {
                     array[k] = aux[j];
-                    troca++;
                     j = j - 1;
+
+                    troca++;
                 }
             }
         }

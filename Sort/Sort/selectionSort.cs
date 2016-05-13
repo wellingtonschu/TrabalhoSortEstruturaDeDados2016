@@ -22,9 +22,10 @@
                     {
                         menor = array[j];
                         posicao = j;
+
+                        troca++;
                     }
                 }
-                troca++;
 
                 int temp = array[posicao];
 

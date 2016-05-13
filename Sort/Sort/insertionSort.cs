@@ -18,10 +18,10 @@
                 {
                     array[j + 1] = array[j];
                     j--; ;
+
+                    troca++;
                 }
                 array[j + 1] = temp;
-
-                troca++;
             }
             return "Quantidade de comparações: " + comparacao + "\nQuantidade de trocas: " + troca;
         }
