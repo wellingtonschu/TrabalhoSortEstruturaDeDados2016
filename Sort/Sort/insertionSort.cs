@@ -2,11 +2,11 @@
 {
     class insertionSort
     {
+        public static long comparacao = 0;
+        public static long troca = 0;
+
         public string InsertionSort(int[] array)
         {
-            long comparacao = 0;
-            long troca = 0;
-
             for (int i = 1; i < array.Length; i++)
             {
                 int j = i - 1;
@@ -17,9 +17,10 @@
                 while (j >= 0 && temp < array[j])
                 {
                     array[j + 1] = array[j];
-                    j--; ;
 
                     troca++;
+
+                    j--; ;
                 }
                 array[j + 1] = temp;
             }

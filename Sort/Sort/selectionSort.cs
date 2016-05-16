@@ -2,11 +2,11 @@
 {
     class selectionSort
     {
+        public static long comparacao = 0;
+        public static long troca = 0;
+
         public string SelectionSort(int[] array)
         {
-            long comparacao = 0;
-            long troca = 0;
-
             int N = array.Length;
 
             for (int i = 0; i < N; i++)
@@ -21,9 +21,10 @@
                     if (array[j] < menor)
                     {
                         menor = array[j];
-                        posicao = j;
 
                         troca++;
+
+                        posicao = j;
                     }
                 }
 

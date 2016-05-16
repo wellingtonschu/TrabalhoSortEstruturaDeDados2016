@@ -29,11 +29,15 @@
 
             for (i = inicio; i <= meio;i++)
             {
+                comparacao++;
+
                 aux[i] = array[i];
             }
 
             for (j = meio + 1;j <= fim;j++)
             {
+                comparacao++;
+
                 aux[fim + meio + 1 - j] = array[j];
             }
 
