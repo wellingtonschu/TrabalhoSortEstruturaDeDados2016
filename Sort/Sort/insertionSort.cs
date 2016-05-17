@@ -20,7 +20,7 @@
 
                     troca++;
 
-                    j--; ;
+                    j--;
                 }
                 array[j + 1] = temp;
             }
